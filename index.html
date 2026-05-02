@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Taher | AI Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Animated background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism header */
+        header {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #fff, #a8b2ff, #667eea);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header .title {
+            font-size: 1.4rem;
+            color: #a8b2ff;
+            margin-bottom: 10px;
+        }
+
+        header .location {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Glowing card effect */
+        section {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 30px 0;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff, #a8b2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        /* Skills with animation */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Project cards */
+        .project {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 3px solid #667eea;
+        }
+
+        .project:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(10px);
+        }
+
+        .project h3 {
+            color: #a8b2ff;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: #667eea;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .project p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .project-status {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .status-completed {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+
+        .status-progress {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+
+        /* Certifications */
+        .certification {
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .certification:hover {
+            background: rgba(102,126,234,0.15);
+            transform: translateX(5px);
+            border-color: #667eea;
+        }
+
+        .certification strong {
+            color: #a8b2ff;
+        }
+
+        /* Contact section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact a {
+            color: #a8b2ff;
+            text-decoration: none;
+            padding: 10px 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Floating animation for header */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        header h1 {
+            animation: gradientShift 3s ease infinite, float 4s ease-in-out infinite;
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(102,126,234,0.3);
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transition: 0.1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header .title {
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 20px;
+            }
+            .contact p {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom cursor -->
+    <div class="cursor"></div>
+
+    <div class="container">
+        <header>
+            <h1>Mohamed Taher</h1>
+            <div class="title">✨ AI Engineering Student | Machine Learning | Generative AI ✨</div>
+            <div class="location">
+                📍 Egyptian Chinese University | Computer Science, AI Specialization
+            </div>
+        </header>
+
+        <section class="reveal">
+            <h2>📖 About Me</h2>
+            <p>Computer Science student specializing in AI, with completed Stanford ML coursework and Harvard CS50P. Selected participant in Egypt's Digital Pioneers Generative AI initiative. Passionate about building intelligent systems that solve real-world problems.</p>
+        </section>
+
+        <section class="reveal">
+            <h2>⚡ Technical Skills</h2>
+            <div class="skills">
+                <span class="skill-tag" style="animation-delay: 0.1s">🐍 Python</span>
+                <span class="skill-tag" style="animation-delay: 0.2s">📊 Pandas</span>
+                <span class="skill-tag" style="animation-delay: 0.3s">🔢 NumPy</span>
+                <span class="skill-tag" style="animation-delay: 0.4s">📈 Data Analysis</span>
+                <span class="skill-tag" style="animation-delay: 0.5s">🤖 Scikit-learn</span>
+                <span class="skill-tag" style="animation-delay: 0.6s">🔗 LangChain</span>
+                <span class="skill-tag" style="animation-delay: 0.7s">📚 RAG</span>
+                <span class="skill-tag" style="animation-delay: 0.8s">✍️ Prompt Engineering</span>
+                <span class="skill-tag" style="animation-delay: 0.9s">🧠 TensorFlow</span>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2>🚀 Projects</h2>
+
+            <!-- Project 1: Complete ML Pipeline (NOT house price) -->
+            <div class="project">
+                <h3>📊 Complete Machine Learning Pipeline - Regression, Classification & Clustering</h3>
+                <div class="project-tech">Python | Pandas | Scikit-learn | K-Means | Random Forest | Linear Regression</div>
+                <p>End-to-end ML project on housing dataset including comprehensive EDA, outlier detection, VIF analysis, K-Means clustering, classification (Random Forest), and regression (Linear, Ridge, Lasso, Random Forest). Generated 11 visualizations for insights.</p>
+                <span class="project-status status-completed">✅ Completed</span>
+                <a href="https://github.com/mohamedtaher/house-price-prediction" target="_blank" style="display: inline-block; margin-top: 10px; margin-left: 15px; color: #a8b2ff;">🔗 View Code on GitHub →</a>
+            </div>
+
+            <!-- Project 2: CS50P Assignments -->
+            <div class="project">
+                <h3>🐍 CS50P - Python Programming Assignments</h3>
+                <div class="project-tech">Python | Harvard University</div>
+                <p>Completed all weekly problem sets from Harvard's CS50P course, covering functions, conditionals, loops, exceptions, file I/O, regular expressions, and OOP. All solutions passed check50 validation.</p>
+                <span class="project-status status-completed">✅ Completed</span>
+                <a href="https://github.com/mohamedtaher/CS50P-Assignments" target="_blank" style="display: inline-block; margin-top: 10px; margin-left: 15px; color: #a8b2ff;">🔗 View Code on GitHub →</a>
+            </div>
+
+            <!-- Project 3: Team Project (On Friend's GitHub) -->
+            <div class="project">
+                <h3>🤖 Multi-Agent AI System with RAG Integration</h3>
+                <div class="project-tech">LangChain | Python | RAG | Vector Databases | FastAPI</div>
+                <p>Team project (3 members) for DEPI course. Building an intelligent AI system where multiple agents collaborate to answer complex questions using document retrieval and autonomous planning.</p>
+                <p><strong>👤 My Role:</strong> RAG Pipeline & Retrieval System Specialist</p>
+                <span class="project-status status-progress">🟡 In Progress (Team Project)</span>
+                <a href="#" target="_blank" style="display: inline-block; margin-top: 10px; margin-left: 15px; color: #a8b2ff;">🔗 View Team Repository →</a>
+            </div>
+
+            <!-- Project 4: Coming Soon (Customer Segmentation) -->
+            <div class="project">
+                <h3>📈 Customer Segmentation Analysis (Coming Soon)</h3>
+                <div class="project-tech">Python | Scikit-learn | K-Means | Pandas | Matplotlib</div>
+                <p>Planned project: Applying clustering techniques to segment customers based on purchasing behavior. Will include elbow method, silhouette score, and actionable business insights.</p>
+                <span class="project-status status-progress">⏳ Planned - Next Month</span>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2>📜 Certifications</h2>
+            <div class="certification">
+                <strong>🏆 Kaggle Pandas Certification</strong> - Data manipulation and analysis
+            </div>
+            <div class="certification">
+                <strong>🏆 Supervised Machine Learning: Regression & Classification</strong> - Andrew Ng, Stanford/DeepLearning.AI
+            </div>
+            <div class="certification">
+                <strong>📚 Advanced Learning Algorithms</strong> - Andrew Ng (In Progress)
+            </div>
+            <div class="certification">
+                <strong>🚀 Generative AI Training</strong> - Egypt's Digital Pioneers Initiative (DEPI)
+            </div>
+            <div class="certification">
+                <strong>🐍 CS50P - Introduction to Programming with Python</strong> - Harvard University (Completed all assignments)
+            </div>
+        </section>
+
+        <section class="contact reveal">
+            <h2>📫 Contact Me</h2>
+            <p>
+                <a href="mailto:mohamedtaaherr@gmail.com">📧 mohamedtaaherr@gmail.com</a>
+                <a href="https://github.com/mohamedtaher" target="_blank">📁 GitHub</a>
+                
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mohamed Taher | AI Engineering Student | Built with 💜</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top <= window.innerHeight - 100;
+        }
+
+        function handleScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Add hover effect on links for cursor
+        const links = document.querySelectorAll('a, .skill-tag, .project');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.background = 'rgba(102,126,234,0.5)';
+            });
+            link.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'rgba(102,126,234,0.3)';
+            });
+        });
+    </script>
+</body>
+</html>
